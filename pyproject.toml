@@ -12,9 +12,7 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
-package_data={
-    'pyReqCheck': ['stdlib', 'mapping'],
-},
+package_data={'pyReqCheck': ['stdlib', 'mapping']}
 
 [project.urls]
 Homepage = "https://github.com/JoarGjersund/pyReqCheck"
