@@ -13,8 +13,8 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 package_data={
-    '': ['stdlib'],
-    '': ['mapping'],
+    'pyReqCheck': ['stdlib'],
+    'pyReqCheck': ['mapping'],
 },
 
 [project.urls]
