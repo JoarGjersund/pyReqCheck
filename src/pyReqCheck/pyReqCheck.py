@@ -144,6 +144,9 @@ def compare_lists(list1, list2):
         if item.lower() not in ([x.lower() for x in list1] + list(SYSTEM_PACKAGES))
     ]
 
+    if not (warning_entries or  error_entries):
+        print("::success:: All packages are used in requirements.txt")
+
     if warning_entries:
         print(
             f"::warning:: Package in requirements.txt file not used in any modules: {warning_entries}"
@@ -153,3 +156,4 @@ def compare_lists(list1, list2):
             f"::error:: One or more packages are imported but not found in requirements.txt: {error_entries}"
         )
         exit(1)
+
