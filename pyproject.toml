@@ -12,6 +12,8 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
+package_data={'src': ['stdlib', 'mapping']},
+include_package_data=True,
 
 [project.urls]
 Homepage = "https://github.com/JoarGjersund/pyReqCheck"
