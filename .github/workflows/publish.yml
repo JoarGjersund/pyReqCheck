@@ -77,22 +77,12 @@ jobs:
       id: get_version
       run: echo "::set-output name=version::$(tomlq -r '.version' path/to/your/file.toml)"
 
-    - name: Apply tag based on version
-      run: git tag -a v${{ steps.get_version.outputs.version }} -m "Tagging version ${{ steps.get_version.outputs.version }}"
-
-    - name: Create GitHub Release
-      env:
-        GITHUB_TOKEN: ${{ github.token }}
-      run: >-
-        gh release create
-        '${{ steps.get_version.outputs.version }}'
-        --repo '${{ github.repository }}'
-        --notes ""
-
-    - name: Upload artifact signatures to GitHub Release
-      env:
-        GITHUB_TOKEN: ${{ github.token }}
-      run: >-
-        gh release upload
-        '${{ steps.get_version.outputs.version }}' dist/**
-        --repo '${{ github.repository }}'
+    - name: Publish release draft
+      uses: softprops/action-gh-release@v1
+      with:
+        name: Release ${{ steps.get_version.outputs.version }}
+        files: |
+            src/*
+        draft: false
+        target_commitish: ${{ github.sha }}
+        tag_name: ${{ steps.get_version.outputs.version }}
