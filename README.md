@@ -9,11 +9,11 @@ Python library for checking if any modules are missing in your project's require
 `python -m pyReqCheck`
 
 ## Success
-::success:: All packages are used in requirements.txt
+`::success:: All packages are used in requirements.txt`
 
 ## warning
-some packages are not used
-:warning:: Package in requirements.txt file not used in any modules: []
+
+`::warning:: Package in requirements.txt file not used in any modules: []`
 
 ## Failure
-::error:: One or more packages are imported but not found in requirements.txt: [comma seperated list of missing modules]
+`::error:: One or more packages are imported but not found in requirements.txt: [comma seperated list of missing modules]`
