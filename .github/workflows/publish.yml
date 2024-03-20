@@ -73,10 +73,13 @@ jobs:
           ./dist/*.tar.gz
           ./dist/*.whl
 
+    - name: checkout repo
+      uses: actions/checkout@v4
     - name: Read version from TOML file
       id: get_version
-      run: echo "::set-output name=version::$(tomlq -r '.version' path/to/your/file.toml)"
-
+      run: |
+        version=$(cat pyproject.toml | grep 'version' | cut -d '=' -f2 | tr -d '" ')
+        echo "::set-output name=version::$version"
     - name: Publish release draft
       uses: softprops/action-gh-release@v1
       with:
