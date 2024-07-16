@@ -94,7 +94,7 @@ def parse_requirements(file_):
     modules = []
     # For the dependency identifier specification, see
     # https://www.python.org/dev/peps/pep-0508/#complete-grammar
-    delim = ["<", ">", "=", "!", "~"]
+    delim = ["<", ">", "=", "!", "~", "@"]
 
     try:
         f = open(file_, "r")
