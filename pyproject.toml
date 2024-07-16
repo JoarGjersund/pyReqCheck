@@ -1,6 +1,6 @@
 [project]
 name = "pyReqCheck"
-version = "0.91"
+version = "0.92"
 authors = [
   { name="Joar Gjersund", email="joargjersund@gmail.com" },
 ]
