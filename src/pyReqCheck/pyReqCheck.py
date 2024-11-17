@@ -87,7 +87,11 @@ def get_all_imports(path, encoding=None, extra_ignore_dirs=None, follow_links=Tr
     with open(join("stdlib"), "r") as f:
         data = {x.strip() for x in f}
 
-    data.update(args.ignore_modules)
+    try:
+        data.update(args.ignore_modules)
+        print("Ignoring modules: ", args.ignore_modules)
+    except TypeError:
+        pass
 
     return list(packages - data)
 
