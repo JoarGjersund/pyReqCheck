@@ -76,8 +76,8 @@ def get_all_imports(
         data = {x.strip() for x in f}
 
     try:
-        data.update(args.ignore_modules)
-        print("Ignoring modules: ", args.ignore_modules)
+        data.update(ignore_modules)
+        print("Ignoring modules: ", ignore_modules)
     except TypeError:
         pass
 
