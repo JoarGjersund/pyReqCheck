@@ -8,7 +8,7 @@ parser = argparse.ArgumentParser(
     description="Script for checking if all imports are in requirements.txt"
 )
 parser.add_argument(
-    "-ignore",
+    "-i",
     "--ignore-modules",
     nargs="*",
     type=str,
@@ -87,7 +87,7 @@ def get_all_imports(path, encoding=None, extra_ignore_dirs=None, follow_links=Tr
     with open(join("stdlib"), "r") as f:
         data = {x.strip() for x in f}
 
-    args.ignore_modules = data.update(args.ignore_modules)
+    data.update(args.ignore_modules)
 
     return list(packages - data)
 
