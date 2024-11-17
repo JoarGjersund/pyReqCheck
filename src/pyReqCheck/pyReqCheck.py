@@ -10,8 +10,9 @@ parser = argparse.ArgumentParser(
 parser.add_argument(
     "-i",
     "--ignore-modules",
-    nargs="*",
+    nargs="+",
     type=str,
+    default=[],
     required=False,
     action="store",
     help="name of modules to ignore",
