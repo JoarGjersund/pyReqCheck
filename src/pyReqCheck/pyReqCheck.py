@@ -2,22 +2,7 @@ import ast
 import logging
 import os
 import traceback
-import argparse
 
-parser = argparse.ArgumentParser(
-    description="Script for checking if all imports are in requirements.txt"
-)
-parser.add_argument(
-    "-i",
-    "--ignore-modules",
-    nargs="+",
-    type=str,
-    default=[],
-    required=False,
-    action="store",
-    help="name of modules to ignore",
-)
-args = parser.parse_args()
 
 KNOWN_DYNAMIC_IMPORTS = {"gi", "dbus"}  # Add more as needed
 SYSTEM_PACKAGES = {"dbus-python"}  # Add more as needed
@@ -28,7 +13,9 @@ def join(f):
     return os.path.join(os.path.dirname(__file__), f)
 
 
-def get_all_imports(path, encoding=None, extra_ignore_dirs=None, follow_links=True):
+def get_all_imports(
+    path, encoding=None, extra_ignore_dirs=None, follow_links=True, ignore_modules=[]
+):
     imports = set()
     raw_imports = set()
     candidates = []

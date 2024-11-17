@@ -1,10 +1,31 @@
 
 
 from .pyReqCheck import *
+import argparse
+
+parser = argparse.ArgumentParser(
+    description="Script for checking if all imports are in requirements.txt"
+)
+parser.add_argument(
+    "-ignore",
+    "--ignore-modules",
+    nargs="+",
+    type=str,
+    required=False,
+    default=[],
+    action="store",
+    help="name of modules to ignore",
+)
+args = parser.parse_args()
+
 
 def main():
     imports = get_all_imports(
-        ".", encoding=None, extra_ignore_dirs=["requirements_check"], follow_links=True
+        ".",
+        encoding=None,
+        extra_ignore_dirs=["requirements_check"],
+        follow_links=True,
+        ignore_modules=args.ignore_modules,
     )
 
     requirements = []
